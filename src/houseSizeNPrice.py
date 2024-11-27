@@ -25,13 +25,16 @@ model.fit(xTrain, yTrain)
 
 
 # TEST - MEAN SQUARE ERROR: 0. EVERYTHING IS OK. 
-# yPred = model.predict(xTest)
 # Smaller the error, the better the prediction.
-# mse = mean_squared_error(yTest, yPred)       
-# rmse = np.sqrt(mse)                       # get square root
-# print(f"Mean square error: {rmse}")
-
+yPred = model.predict(xTest)
+mse = mean_squared_error(yTest, yPred)       
+rmse = np.sqrt(mse)                       # get square root
+print(f"Mean square error: {rmse} 🎉 🎉 🎉")
 
 houseSize = float(input("Enter the size of house in( m²): "))
-estimatedPrice = model.predict([[houseSize]])          # guess the price
-print(f"Estimated the price of house: {estimatedPrice[0]:.2f} TL")
+
+# Create a DataFrame for the prediction to preserve the feature name.
+inputData = pd.DataFrame({'HouseSize': [houseSize]})
+
+estimatedPrice = model.predict(inputData)                  # guess the price
+print(f"Estimated the price of house: {estimatedPrice[0]:.2f} ₺")
