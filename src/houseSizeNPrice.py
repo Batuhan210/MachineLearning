@@ -20,7 +20,7 @@ y = df['Price']           # It's an output
 xTrain, xTest, yTrain, yTest = train_test_split(x,y, test_size = 0.2, random_state = 42)
 
 # Create Model - Training the data
-model = LinearRegression()         # Checks for linear regression
+model = LinearRegression()         
 model.fit(xTrain, yTrain)           
 
 
